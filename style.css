@@ -1,0 +1,28 @@
+body{
+    margin: 0;
+}
+
+h1{
+    color:rgb(113, 20, 220);
+    font-size: 50px; 
+    font-weight: 400;
+    font-family:'Playpen Sans', cursive; 
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    text-decoration-color: skyblue;
+    text-decoration-thickness: 15px;
+    text-shadow: 5px 5px 5px black;
+    text-align: center;
+}
+
+div{
+    text-align: left;
+    color: black;
+    font-size: 25px;
+    font-weight: 200;
+}
+
+ul{
+    font-size: 30px;
+    color: rgb(113, 20, 220);
+}

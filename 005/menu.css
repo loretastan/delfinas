@@ -1,36 +1,35 @@
-body{
+body {
     margin: 0;
     padding: 0;
     font-family: monospace;
     font-size: 16px;
 }
 
-.top-bar{
+.top-bar {
     width: 100%;
     height: 70px;
     border-bottom: 3px solid greenyellow;
 }
 
-.burger{
+.burger {
     width: 70px;
     height: 6px;
     background-color: greenyellow;
     border-radius: 3px;
-    margin: 20px;
     position: relative;
 }
 
-burger::before{
+burger::before {
     content: '';
     position: absolute;
     width: 70px;
     height: 6px;
     background-color: greenyellow;
     border-radius: 3px;
-    top: -15px;
+    top: 30px;
 }
 
-.burger::after{
+.burger::after {
     content: '';
     position: absolute;
     width: 70px;
@@ -40,13 +39,10 @@ burger::before{
     top: 15px;
 }
 
-label{
-    content: '';
-    position: absolute;
+label {
     cursor: pointer;
-    display: block;
-    height: 50px;
+    display: inline-block;
+    height: 46px;
+    width: 70px;
     border: 1px solid greenyellow;
-    border-radius: 3px;
-    top: 15px;
 }
