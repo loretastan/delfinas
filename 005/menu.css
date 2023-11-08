@@ -1,0 +1,52 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+.top-bar{
+    width: 100%;
+    height: 70px;
+    border-bottom: 3px solid greenyellow;
+}
+
+.burger{
+    width: 70px;
+    height: 6px;
+    background-color: greenyellow;
+    border-radius: 3px;
+    margin: 20px;
+    position: relative;
+}
+
+burger::before{
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 6px;
+    background-color: greenyellow;
+    border-radius: 3px;
+    top: -15px;
+}
+
+.burger::after{
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 6px;
+    background-color: greenyellow;
+    border-radius: 3px;
+    top: 15px;
+}
+
+label{
+    content: '';
+    position: absolute;
+    cursor: pointer;
+    display: block;
+    height: 50px;
+    border: 1px solid greenyellow;
+    border-radius: 3px;
+    top: 15px;
+}
