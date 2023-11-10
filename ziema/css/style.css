@@ -15,6 +15,7 @@
 body {
     background-color: black;
     color: white;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -42,6 +43,10 @@ li {
     flex-grow: 1;
 }
 
+li:hover {
+    z-index: 1;
+}
+
 li:last-child {
     flex-grow: 10;
 }
@@ -53,10 +58,12 @@ img {
     vertical-align: bottom;
     filter: grayscale(100%) brightness(75%);
     transition: all 0.5s;
+    z-index: 0;
 }
 
 img:hover {
     filter: grayscale(0%) brightness(100%);
     min-width: 105%;
+    z-index: 1;
 }
 
