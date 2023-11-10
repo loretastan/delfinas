@@ -47,7 +47,7 @@ div {
     width: 630px;
     text-align: center;
     font-size: 20px;
-    border: 1px solid rgb(110, 30, 110);
+    border: 2px dashed rgb(110, 30, 110);
     font-family: sans-serif;
 }
     

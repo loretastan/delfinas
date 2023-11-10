@@ -1,0 +1,62 @@
+@font-face {
+    font-family: Pumpkin;
+    src: url(../fonts/NightPumpkind.ttf);
+}
+
+/* RESET*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    font-family: Pumpkin;
+    font-size: 18vw;
+    text-align: center;
+    padding: 20px;
+}
+
+footer {
+    font-family: Pumpkin;
+    font-size: 1.5rem;
+    padding: 60px 30px 60px 0;
+    text-align: right;
+    background-color: #222;
+}
+
+ul {
+    display :flex;
+    flex-wrap: wrap;
+}
+
+li {
+    height: 30vh;
+    flex-grow: 1;
+}
+
+li:last-child {
+    flex-grow: 10;
+}
+
+img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    vertical-align: bottom;
+    filter: grayscale(100%) brightness(75%);
+    transition: all 0.5s;
+}
+
+img:hover {
+    filter: grayscale(0%) brightness(100%);
+    min-width: 105%;
+}
+
