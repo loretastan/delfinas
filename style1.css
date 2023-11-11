@@ -1,0 +1,27 @@
+body{
+background-color: rgba(101, 81, 119, 0.432);
+}
+
+h1 {
+    color:rgb(113, 20, 220);
+    font-size: 50px; 
+    font-weight: 400;
+    font-family:'Playpen Sans', cursive; 
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    text-decoration-color: skyblue;
+    text-decoration-thickness: 15px;
+    text-shadow: 5px 5px 5px black;
+    text-align: center;
+}
+
+div {
+    color: black;
+    display: inline-block;
+    height: 130px;
+    width: 630px;
+    text-align: center;
+    font-size: 15px;
+    border: 5px dotted rgb(110, 30, 110);
+    font-family: sans-serif;
+}
