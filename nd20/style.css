@@ -1,14 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;1,400&family=Playpen+Sans:wght@500&display=swap");
 
-:root {
-  --primary-color: #f1faff;
-  --text-dark: #030712;
-  --text-light: #6b7280;
-  --extra-light: #fbfbfb;
-  --white: #ffffff;
-  --max-width: 1200px;
-}
-
 * {
   padding: 0;
   margin: 0;
@@ -16,7 +7,7 @@
 }
 
 .section__container {
-  max-width: var(--max-width);
+  max-width: 1200px;
   margin: auto;
   padding: 5rem 1rem;
 }
@@ -27,7 +18,7 @@
   text-align: center;
   font-size: 2rem;
   font-weight: 600;
-  color: let(--text-dark);
+  color: #030712;
   position: relative;
 }
 
@@ -69,7 +60,7 @@ body {
   font-size: 0.8rem;
   text-align: center;
   background-color: #030712;
-  color: var(--white);
+  color: #ffffff;
 }
 
 .nav__container {
@@ -82,7 +73,7 @@ body {
 .nav__logo {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--text-dark);
+  color: #030712;
 }
 
 .nav__links {
@@ -96,12 +87,12 @@ body {
   padding: 0 0.5rem;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--text-light);
+  color: #6b7280;
   transition: 0.3s;
 }
 
 .link a:hover {
-  color: var(--text-dark);
+  color: #030712;
 }
 
 .nav__icons {
@@ -116,7 +107,7 @@ body {
 
 header {
   margin-top: 10rem;
-  background-color: var(--primary-color);
+  background-color: #f1faff;
 }
 
 .header__container {
@@ -128,7 +119,7 @@ header {
 .header__content p {
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--text-light);
+  color: #6b7280;
   margin-bottom: 0.5rem;
 }
 
@@ -136,12 +127,12 @@ header {
   font-size: 3rem;
   font-weight: 400;
   margin-bottom: 2rem;
-  color: var(--text-dark);
+  color: #030712;
 }
 
 .header__content .btn {
-  background-color: var(--text-dark);
-  color: var(--white);
+  background-color: #030712;
+  color: #ffffff;
 }
 
 .header__image {
@@ -176,7 +167,7 @@ header {
 
 .collection__content p {
   font-size: 0.9rem;
-  color: var(--text-light);
+  color: #6b7280;
   margin-bottom: 0.5rem;
 }
 
@@ -187,14 +178,14 @@ header {
 }
 
 .collection__content .btn {
-  border: 1px solid var(--text-dark);
-  color: var(--text-dark);
-  background-color: var(--white);
+  border: 1px solid #030712;
+  color: #030712;
+  background-color: #ffffff;
 }
 
 .collection__content .btn:hover {
-  background-color: var(--text-dark);
-  color: var(--white);
+  background-color: #030712;
+  color: #ffffff;
 }
 
 .sale__grid {
@@ -214,7 +205,7 @@ header {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
-  color: var(--white);
+  color: #ffffff;
   text-align: center;
 }
 
@@ -233,8 +224,8 @@ header {
 
 .sale__btn {
   margin-top: 2rem;
-  color: var(--white);
-  background-color: var(--text-dark);
+  color: #ffffff;
+  background-color: #030712;
 }
 
 .sale__card::before {
@@ -253,8 +244,8 @@ header {
 }
 
 .sale__card:hover .sale__btn {
-  color: var(--text-dark);
-  background-color: var(--white);
+  color: #030712;
+  background-color: #ffffff;
 }
 
 .musthave__nav {
@@ -269,12 +260,12 @@ header {
 .musthave__nav a {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--text-light);
+  color: #6b7280;
   transition: 0.3s;
 }
 
 .musthave__nav a:hover {
-  color: var(--text-dark);
+  color: #030712;
 }
 
 .musthave__grid {
@@ -286,7 +277,7 @@ header {
 .musthave__card {
   display: grid;
   gap: 0.5rem;
-  color: var(--text-dark);
+  color: #030712;
 }
 
 .musthave__card h4 {
@@ -302,11 +293,11 @@ header {
 
 .musthave__card p del {
   font-weight: 400;
-  color: var(--text-light);
+  color: #6b7280;
 }
 
 .news {
-  background-color: var(--extra-light);
+  background-color: #fbfbfb;
 }
 
 .news__grid {
@@ -324,12 +315,12 @@ header {
 
 .news__details p {
   font-size: 0.8rem;
-  color: var(--text-light);
+  color: #6b7280;
 }
 
 .news__details p i {
   font-size: 0.5rem;
-  color: var(--text-light);
+  color: #6b7280;
   padding: 0.5rem;
 }
 
@@ -340,17 +331,17 @@ header {
 .news__details h4 {
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--text-dark);
+  color: #030712;
 }
 
 .news__details a i {
   font-size: 1.2rem;
-  color: var(--text-light);
+  color: #6b7280;
   transition: 0.3s;
 }
 
 .news__details a:hover i {
-  color: var(--text-dark);
+  color: #030712;
 }
 
 .brand__container {
@@ -383,7 +374,7 @@ header {
 }
 
 .footer__heading {
-  color: var(--text-light);
+  color: #6b7280;
   font-size: 1rem;
   font-weight: 600;
   padding-bottom: 1rem;
@@ -398,20 +389,20 @@ header {
   bottom: 0;
   height: 2px;
   width: 50px;
-  background-color: var(--text-light);
+  background-color: #6b7280;
 }
 
 .footer__col p {
   font-size: 0.9rem;
   font-weight: 500;
   margin-bottom: 1rem;
-  color: var(--text-light);
+  color: #6b7280;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .footer__col p:hover {
-  color: var(--text-dark);
+  color: #030712;
 }
 
 .footer__col p i {
@@ -436,7 +427,7 @@ header {
 .copyright {
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--text-light);
+  color: #6b7280;
 }
 
 .footer__form {
@@ -457,12 +448,12 @@ header {
   padding: 0.75rem 1rem;
   outline: none;
   border: none;
-  border-bottom: 1px solid var(--text-dark);
+  border-bottom: 1px solid #030712;
   font-size: 0.8rem;
 }
 
 .footer__form .btn {
-  background-color: var(--text-dark);
+  background-color: #030712;
   color: white;
 }
 
