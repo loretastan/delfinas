@@ -4,8 +4,6 @@ function rand(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-//
-
 console.log("Namu darbai 1.salyga");
 
 let digit1 = rand(0, 4);
@@ -90,3 +88,52 @@ for (let i = 0; i < 3; i++) {
   }
   console.log(`${number} ${symbol}`);
 }
+
+console.log("Namu darbai 6.salyga");
+
+// atsitiktinis zvakiu skaicius nuo 5 iki 3000
+
+const zvakiukiekis = Math.floor(Math.random() * (3000 - 5 + 1)) + 5;
+
+// kaina zvakes vienetui
+
+const vntkaina = 1;
+
+// bendra kaina
+
+let bendrakaina = zvakiukiekis * vntkaina;
+
+//nuolaida
+
+if (bendrakaina > 1000 && bendrakaina <= 2000) {
+  bendrakaina *= 0.97; // 3% nuolaida
+} else if (bendrakaina > 2000) {
+  bendrakaina *= 0.96; // 4% nuolaida
+}
+
+console.log(`Perkama ${zvakiukiekis} zvakiu uz ${bendrakaina.toFixed(2)} EUR.`);
+
+console.log("Namu darbai 7.salyga");
+
+let numeris1 = Math.floor(Math.random(0, 101) * 101);
+let numeris2 = Math.floor(Math.random(0, 101) * 101);
+let numeris3 = Math.floor(Math.random(0, 101) * 101);
+
+let vidurkis = (numeris1 + numeris2 + numeris3) / 3;
+
+// reiksmes pagal salyga
+
+let filtruotiskaiciai = [numeris1, numeris2, numeris3].filter(
+  (reiksme) => reiksme >= 10 && reiksme <= 90
+);
+
+// naujas aritmetinis vidurkis
+
+let nvidurkis =
+  filtruotiskaiciai.reduce((sum, value) => sum + value, 0) /
+  filtruotiskaiciai.length;
+
+console.log("Pradiniai skaiciai:", numeris1, numeris2, numeris3);
+console.log("Pradinis aritmetinis vidurkis:", vidurkis.toFixed(2));
+console.log("Filtruoti skaiciai:", filtruotiskaiciai);
+console.log("Naujas aritmetinis vidurkis:", nvidurkis.toFixed(2));
