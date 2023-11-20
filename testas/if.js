@@ -76,17 +76,3 @@ if (ridenimas === 1 || ridenimas === 5) {
 } else if (ridenimas === 2 || ridenimas === 6) {
   console.log("Pirkti saldytuva.");
 }
-
-console.log("5.salyga");
-
-let skaicius1 = Math.floor(Math.random(1, 7) * 7) + 1;
-let skaicius2 = Math.floor(Math.random(1, 7) * 7) + 1;
-let skaicius3 = Math.floor(Math.random(1, 7) * 7) + 1;
-
-let skaiciai = [skaicius1, skaicius2, skaicius3];
-
-skaiciai.sort(function (a, b) {
-  return a - b;
-});
-
-console.log(skaiciai.join(" "));
