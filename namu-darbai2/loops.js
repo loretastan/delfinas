@@ -71,3 +71,31 @@ for (let i = 0; i < skaicius; i++) {
     console.log(skaicius);
   }
 }
+
+console.log("7.salyga");
+
+let seven;
+let sum1 = 0;
+let sum2 = 0;
+
+for (let i = 0; i < 5; i++) {
+  let random = rand(10, 20);
+  //seven = random;
+  //console.log(seven);
+
+  // seven = seven || 0;
+  //seven = seven + random;
+
+  //sum1 = sum1 + random;
+  //seven = seven || "";
+  //seven = seven + " " + random;
+
+  sum2 = sum2 + random;
+  seven = seven || "";
+  seven = seven + (i ? " + " : "") + random;
+}
+
+//seven = seven + " " + sum1;
+seven = seven + " = " + sum2;
+
+console.log(seven);
