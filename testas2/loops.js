@@ -47,3 +47,22 @@ if (likesKuras >= 0) {
     `Automobilis nr.55 sugebejo iveikti visus 10 ratu ir liko ${likesKuras} litru kuro.`
   );
 }
+
+console.log("4.salyga.");
+
+let minGreitis = Infinity;
+
+for (let ratas = 1; ratas <= 10; ratas++) {
+  console.log(`Ratas ${ratas}:`);
+  for (let posukis = 1; posukis <= 5; posukis++) {
+    const greitis = rand(20, 120);
+    console.log(`Posukis ${posukis}: Automobilio greitis - ${greitis} km/h`);
+    if (greitis < minGreitis) {
+      minGreitis = greitis;
+    }
+  }
+}
+
+console.log(
+  `Maziausias greitis automobilio visuose posukiuose buvo: ${minGreitis} km/h`
+);
