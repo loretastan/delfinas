@@ -16,6 +16,18 @@ spausdintiTekstaKartus('Mano tekstas', 3);
 
 console.log('4.Salyga');
 
+function beLiekanos(n) {
+    let dalijimai = 0;
+    for (let i = 2; i < n; i++)
+    if (n % i === 0) dalijimai++;
+    return dalijimai;
+}
+
+let skaicius = 12;
+let rezultatas = 
+beLiekanos(skaicius);
+console.log(`Skaicius ${skaicius} dalijasi be liekanos is ${rezultatas} sveiku skaiciu.`);
+
 
 
 
