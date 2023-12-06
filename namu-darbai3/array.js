@@ -1,11 +1,28 @@
 console.log('1. Salyga!');
 
-const numbers = Array.from({ length: 30 }, () => String(Math.floor(Math.random() * (25 - 5 + 1)) + 5 ));
+const masyvas =[];
 
-console.log(numbers);
+function rand(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-console.log('2. Salyga A.dalis.')
+for (let i = 0; i < 30; i++) {
+    masyvas.push(rand(5, 25));
+}
 
-const number = numbers.filter(value => parseInt(value) > 10).length;
+console.log(masyvas);
 
-console.log(number);
+// variantas 2.salyga A
+
+const variantasA = (masyvas.lenth / 2) + (masyvas.lenth / 2 - 1);
+console.log(variantasA);
+
+const variantasB = 0;
+
+for (let i = 0; i < 30; i++) {
+    if ( i % 2 === 0 && i !== 0) variantasB += masyvas[i];
+}
+
+console.log(variantasB);
