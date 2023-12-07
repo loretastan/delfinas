@@ -1,0 +1,50 @@
+console.log('1.Uzduotis');
+
+function rand(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+
+const bitGirls = ['Edita', 'Lina', 'Brigita', 'Deimantė', 'Justė'];
+
+bitGirls.unshift('Nauseda');
+
+console.log(bitGirls);
+
+console.log('2.Uzduotis');
+
+const cats = ['Murka', 'Rainius', 'Meilute', 'Bosas', 'Dickis'];
+console.log(cats);
+
+const bitCats = []
+
+for (let i = 0; i < cats.length; i++) {
+    const catName = cats[i];
+    const weight = Math.random(0.5, 2) < 0.5 ? 'storas' : 'normalus';
+    bitCats.push([catName, weight]);
+}
+console.log(bitCats);
+
+console.log('3.Uzduotis');
+
+const storasCount = bitCats.reduce((count, cat) =>(cat[1] == 'storas' ? count + 1 : count), 0);
+const normalusCount = bitCats.reduce((count, cat) => (cat[1] == 'normalus' ? count + 1 : count), 0);
+
+console.log(`Storu katinuku: ${storasCount}`);
+console.log(`Normaliu katinuku: ${normalusCount}`);
+
+console.log('4.Uzduotis');
+
+bitCats.sort((cat1, cat2) => cat1[0][1].localeCompare(cat2[0][1]));
+
+console.log(bitCats);
+
+console.log('4.Uzduotis');
+
+const happyCats = [];
+
+for (let i = 0; i < bitGirls.length; i++) {
+}
+
