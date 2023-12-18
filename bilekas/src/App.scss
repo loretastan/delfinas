@@ -52,5 +52,14 @@
     &__animal {
       letter-spacing: 2px;
     }
+    &.spin {
+      animation: spin 10s linear infinite;
+    }
   }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  } 
 }
