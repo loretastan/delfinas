@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bankas ver. 1</title>
+    <link rel="stylesheet" href="style.css"> <!-- Įterpti jūsų stiliaus failą čia, jei turite -->
+</head>
+<body>
+    <h1>Bankas ver. 1</h1>
+    
+    <h2>Nauja sąskaita</h2>
+    <label for="vardas">Vardas:</label>
+    <input type="text" id="vardas">
+    <label for="pavarde">Pavardė:</label>
+    <input type="text" id="pavarde">
+    <button onclick="sukurtiSaskaita()">Sukurti sąskaitą</button>
+
+    <h2>Sąskaitų sąrašas</h2>
+    <table id="saskaitos">
+        <thead>
+            <tr>
+                <th>Vardas</th>
+                <th>Pavardė</th>
+                <th>Sąskaitos suma</th>
+                <th>Veiksmai</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Čia bus sąskaitų sąrašo duomenys -->
+        </tbody>
+    </table>
+
+    <script src="bankas.js"></script>
+</body>
+</html>
