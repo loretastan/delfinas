@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "vardas": "jonas",
+    "pavarde": "jonaitis",
+    "suma": 1434
+  },
+  {
+    "id": 2,
+    "vardas": "Petras",
+    "pavarde": "Petraitis",
+    "suma": 890
+  }
+]
