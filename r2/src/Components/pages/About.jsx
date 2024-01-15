@@ -1,6 +1,12 @@
 import Nav from './Nav';
+import { useContext } from 'react';
+import { ParameterContext } from './Layout';
+import Link from './Link';
+import '../../buttons.scss';
 
 export default function About() {
+
+    const { params } = useContext(ParameterContext);
 
     return (
         <>
@@ -8,10 +14,12 @@ export default function About() {
             <main>
                 <h1>About</h1>
                 <h2>Parameter 1:</h2>
-                <p>Parameter 1 is</p>
-                <h2>Parameter 2:</h2>
-                <p>Parameter 2 is</p>
-
+                <p style={{ textAlign: 'center' }}>Parameter 1 is {params[0]}</p>
+                <div className="buttons">
+                    <Link href="#about/bebras">About Bebras</Link>
+                    <Link href="#about/lape">About Lape</Link>
+                    <Link href="#about/zuikis">About Zuikis</Link>
+                </div>
             </main>
         </>
     );
