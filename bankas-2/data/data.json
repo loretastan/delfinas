@@ -1,20 +1,20 @@
 [
   {
-    "id": 1,
-    "vardas": "Jonas ",
-    "pavarde": "Jonaitis",
-    "suma": 4785
-  },
-  {
     "id": 2,
     "vardas": "Petras ",
     "pavarde": "Petraitis",
-    "suma": 440
+    "suma": 471
   },
   {
     "id": 4,
     "vardas": "Ona",
     "pavarde": "Onyte",
     "suma": 7240
+  },
+  {
+    "id": 6,
+    "vardas": "Juozas",
+    "pavarde": "Juozaitis",
+    "suma": 170
   }
 ]

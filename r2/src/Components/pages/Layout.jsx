@@ -4,7 +4,9 @@ import Home from './Home';
 import Contact from './Contact';
 import Loading from './Loading';
 import Page404 from './Page404';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createContext } from 'react';
+
+const ParameterContext = React.createContext()
 
 export default function Layout() {
 

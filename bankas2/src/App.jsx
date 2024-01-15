@@ -1,3 +1,4 @@
+// src/Bankas.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
@@ -12,6 +13,8 @@ const Bankas = () => {
   const [selectedAction, setSelectedAction] = useState({});
   const [naujaSumaMap, setNaujaSumaMap] = useState({});
 
+  const [popupMessage, setPopupMessage] = useState('');
+
   useEffect(() => {
     gautiSaskaitas();
   }, []);
@@ -20,7 +23,6 @@ const Bankas = () => {
     try {
       const response = await axios.get('http://localhost:3001/saskaitos');
       setSaskaitos(response.data);
-
       const naujasSelectedAction = {};
       const naujasNaujaSumaMap = {};
       response.data.forEach((saskaita) => {
@@ -41,6 +43,8 @@ const Bankas = () => {
       setVardas('');
       setPavarde('');
       setSuma(0);
+      setPopupMessage('Sąskaita sėkmingai pridėta.');
+      setTimeout(() => setPopupMessage(''), 3000);
     } catch (error) {
       console.error('Klaida kuriant naują sąskaitą:', error);
     }
@@ -53,20 +57,26 @@ const Bankas = () => {
         suma: naujaSumaMap[id],
       });
       gautiSaskaitas();
-
       setSelectedAction({ ...selectedAction, [id]: 'prideti' });
       setNaujaSumaMap({ ...naujaSumaMap, [id]: 0 });
+      setPopupMessage('Operacija sėkminga.');
+      setTimeout(() => setPopupMessage(''), 3000);
     } catch (error) {
       console.error('Klaida redaguojant sąskaitą:', error);
     }
   };
 
   const istrintiSaskaita = async (id) => {
-    try {
-      await axios.delete(`http://localhost:3001/saskaitos/${id}`);
-      gautiSaskaitas();
-    } catch (error) {
-      console.error('Klaida trinant sąskaitą:', error);
+    const patvirtinimas = window.confirm('Ar tikrai norite ištrinti šią sąskaitą?');
+    if (patvirtinimas) {
+      try {
+        await axios.delete(`http://localhost:3001/saskaitos/${id}`);
+        gautiSaskaitas();
+        setPopupMessage('Sąskaita sėkmingai ištrinta.');
+        setTimeout(() => setPopupMessage(''), 3000);
+      } catch (error) {
+        console.error('Klaida trinant sąskaitą:', error);
+      }
     }
   };
 
@@ -147,6 +157,12 @@ const Bankas = () => {
           </tbody>
         </table>
       </div>
+      {/* Popup langas */}
+      {popupMessage && (
+        <div className="popup">
+          <p>{popupMessage}</p>
+        </div>
+      )}
     </div>
   );
 };
