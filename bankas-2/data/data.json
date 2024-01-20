@@ -3,18 +3,18 @@
     "id": 2,
     "vardas": "Petras ",
     "pavarde": "Petraitis",
-    "suma": 471
-  },
-  {
-    "id": 4,
-    "vardas": "Ona",
-    "pavarde": "Onyte",
-    "suma": 7240
+    "suma": 456
   },
   {
     "id": 6,
     "vardas": "Juozas",
     "pavarde": "Juozaitis",
     "suma": 170
+  },
+  {
+    "id": 8,
+    "vardas": "sss",
+    "pavarde": "sss",
+    "suma": 300
   }
 ]

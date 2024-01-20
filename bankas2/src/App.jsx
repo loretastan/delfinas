@@ -82,7 +82,7 @@ const Bankas = () => {
 
   return (
     <div className="container">
-      <h1 className="header">Bankas ver. 2</h1>
+      <h1 className="header">Bankas 2</h1>
       <div className="section">
         <h2>Sukurti naują sąskaitą</h2>
         <div>
