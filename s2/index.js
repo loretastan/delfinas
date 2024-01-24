@@ -37,7 +37,49 @@ FROM trees
 });
 
 
+//INSERT INTO table_name (column1, column2, column3, ...)
+//VALUES (value1, value2, value3, ...);
 
+app.post('/trees', (req, res) => {
+    const sql = `
+     INSERT INTO trees (name, height, type)
+     VALUES (?, ?, ?)
+     `;
+    const { name, height, type } = req.body;
+    connection.query(sql, [name, height, type], (err, result) => {
+        if (err) throw err;
+        res.json({ id: result.insertId });
+    })
+});
+
+// DELETE FROM table_name WHERE condition;
+app.delete('/trees/:id', (req, res) => {
+    const sql = `
+     DELETE FROM trees
+     WHERE id = ? 
+     `;
+    connection.query(sql, [req.params.id], (err, result) => {
+        if (err) throw err;
+        res.json(result);
+    })
+})
+
+// UPDATE table_name
+// SET column1=value, column2=value, ...
+// WHERE some_column=some_value
+
+app.put('/trees/:id', (req, res) => {
+    const sql = `
+UPDATE trees
+SET height = ?
+WHERE id = ?
+`;
+    const { height } = req.body;
+    connection.query(sql, [height, req.params.id], (err, result) => {
+        if (err) throw err;
+        res.json({ 'status': 'ok' });
+    });
+});
 
 
 
