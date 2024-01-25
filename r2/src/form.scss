@@ -7,6 +7,10 @@
     gap: 10px;
     margin: 20px;
 
+    &.small {
+        width: unset;
+    }
+
     input[type="text"],
     input[type="number"],
     select,
@@ -34,6 +38,11 @@
     input[type="color"] {
         width: 100px;
         height: 100px;
+    }
+
+    input.small-white {
+        width: 200px;
+        color: white;
     }
 
     select {
