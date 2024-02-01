@@ -4,7 +4,7 @@ import './Style/app.scss';
 
 export default function App() {
   return (
-    <div className='app'>
+    <div className="app">
       <AuthProvider>
         <RouterProvider>
         </RouterProvider>

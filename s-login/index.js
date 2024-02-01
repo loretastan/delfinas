@@ -12,27 +12,91 @@ const connection = mysql.createConnection({
 })
 const app = express();
 const port = 3001;
+
 app.use(cors());
 app.use(cors());
 app.use(express.static('public'));
 app.use(bodyParser.json());
+
 connection.connect();
+
+
+const checkUserIsLogged = (user, res) => {
+    if (user) {
+        return true;
+    } else {
+        res.status(401).json({ message: 'Not logged in' });
+    }
+}
+
+
 // router
+
 app.get('/', (req, res) => {
     console.log('Buvo užklausta /');
     res.send('Labas Bebrai!');
 });
 
+
+
 const doAuth = (req, res, next) => {
 
     const token = req.query.token || req.body.token || '';
 
-    console.log('token', token);
+    if (token === '') {
+        return next();
+    }
 
-    return next();
+    const sql = `
+    SELECT users.name, users.id, users.role
+    FROM sessions
+    LEFT JOIN users ON sessions.user_id = users.id
+    WHERE sessions.id = ? AND sessions.time > ?
+  `;
+    const time = Date.now() - 1000 * 60 * 60 * 24;
+    connection.query(sql, [token, time], (err, results) => {
+        if (err) {
+            res.status(500);
+        } else {
+            if (results.length > 0) {
+                const user = results[0];
+                req.user = user;
+            }
+        }
+        return next();
+    });
 };
 
 app.use(doAuth);
+
+app.get('/fruits', (req, res) => {
+
+    if (!checkUserIsLogged(req.user, res)) {
+        return;
+    }
+
+    const sql = 'SELECT * FROM fruits';
+    connection.query(sql, (err, results) => {
+        if (err) {
+            res.status(500);
+        } else {
+            res.json(results);
+        }
+    });
+});
+
+
+app.post('/fruits', (req, res) => {
+    const { name, color, form } = req.body;
+    const sql = 'INSERT INTO fruits (name, color, form ) VALUES (?, ?, ?)';
+    connection.query(sql, [name, color, form], (err, result) => {
+        if (err) {
+            res.status(500);
+        } else {
+            res.json({ success: true, id: result.insertId, uuid: req.body.id });
+        }
+    });
+});
 
 
 app.post('/login', (req, res) => {
@@ -57,7 +121,13 @@ app.post('/login', (req, res) => {
             }
         }
     });
+
 });
+
+
+
+
+
 app.listen(port, () => {
     console.log(`FRUITŲ SERVERIS klauso ${port} porto.`);
 });

@@ -1,4 +1,4 @@
-import TopNav from "../TopNav";
+import TopNav from '../TopNav';
 
 export default function Index() {
     return (
@@ -7,4 +7,4 @@ export default function Index() {
             <h1>Home</h1>
         </div>
     );
-};
+}

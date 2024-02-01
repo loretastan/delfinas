@@ -10,7 +10,10 @@ export default function TopNav() {
         <nav>
             <div className="menu">
                 <a href="#home">Home</a>
-                <a href="#fruits">Fruits</a>
+                {
+                    user && <a href="#fruits">Fruits</a>
+                }
+                <a href="#fruits/create">Add fruit</a>
             </div>
             <div className="login">
                 {
@@ -20,7 +23,7 @@ export default function TopNav() {
                     user && <span> | </span>
                 }
                 {
-                    user && <a onClick={logout}>Logout</a>
+                    user && <i onClick={logout}>Logout</i>
                 }
                 {
                     !user && <a href="#register">Register</a>

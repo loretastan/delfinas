@@ -30,14 +30,13 @@ nav {
     .login {
         display: flex;
         align-items: center;
-        gap: 30px;
+        gap: 20px;
 
         a {
-            color: $yellow;
-            font-size: 30px;
+            color: $black;
+            font-size: 20px;
             cursor: pointer;
             text-decoration: none;
-            font-weight: bold;
             transition: all 0.2s;
 
             &:hover {
@@ -53,6 +52,17 @@ nav {
                 font-weight: bold;
             }
 
+        }
+
+        i {
+            font-size: 20px;
+            color: $black;
+            cursor: pointer;
+            transition: all 0.2s;
+
+            &:hover {
+                color: $red;
+            }
         }
     }
 }
