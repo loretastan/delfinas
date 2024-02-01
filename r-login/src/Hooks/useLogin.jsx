@@ -1,38 +1,38 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
-import { SERVER_URL } from "../Constants/main";
+import { SERVER_URL, AFTER_LOGIN_URL, SITE_URL } from '../Constants/main';
+import { Auth } from '../Contexts/Auth';
 
 export default function useLogin() {
 
     const [inputs, setInputs] = useState(null);
     const [response, setResponse] = useState(null);
 
+    const { login } = useContext(Auth);
+
     useEffect(() => {
         if (null !== inputs) {
             axios.post(`${SERVER_URL}/login`, inputs)
                 .then(res => {
-                    console.log(res);
+                    login(res.data.token, res.data.name);
+                    window.location.href = `${SITE_URL}/${AFTER_LOGIN_URL}`;
                 })
                 .catch(error => {
-                    console.log(error);
                     if (!error.response) {
                         setResponse({
                             ok: false,
                             status: 500,
                             message: 'Server Error'
-                        })
+                        });
                     } else {
                         setResponse({
                             ok: false,
                             status: error.response.status,
-                            message: error.message
-                        })
+                            message: error.response.data?.message || error.message
+                        });
                     }
                 });
         }
     }, [inputs]);
-
-
-
     return [setInputs, response];
 }
