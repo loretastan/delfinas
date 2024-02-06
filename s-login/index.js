@@ -25,7 +25,26 @@ const checkUserIsLogged = (user, res) => {
     if (user) {
         return true;
     } else {
-        res.status(401).json({ message: 'Not logged in' });
+        res.status(401).json({
+            message: 'Not logged in',
+            status: 'login'
+        });
+    }
+}
+
+const checkUserIsAuthorized = (user, res, roles) => {
+    if (user && roles.includes(user.role)) {
+        return true;
+    } else if (user) {
+        res.status(401).json({
+            message: 'Not authorized',
+            status: 'role'
+        });
+    } else {
+        res.status(401).json({
+            message: 'Not logged in',
+            status: 'login'
+        });
     }
 }
 
@@ -71,7 +90,9 @@ app.use(doAuth);
 
 app.get('/fruits', (req, res) => {
 
-    if (!checkUserIsLogged(req.user, res)) {
+    console.log('Buvo užklausta /fruits');
+
+    if (!checkUserIsAuthorized(req.user, res, ['admin', 'user'])) {
         return;
     }
 
@@ -98,13 +119,37 @@ app.post('/fruits', (req, res) => {
     });
 });
 
+app.put('/fruits/:id', (req, res) => {
+    const { name, color, form } = req.body;
+    const sql = 'UPDATE fruits SET name = ?, color = ?, form = ? WHERE id = ?';
+    connection.query(sql, [name, color, form, req.params.id], (err) => {
+        if (err) {
+            res.status(500);
+        } else {
+            res.json({ success: true, id: +req.params.id });
+        }
+    });
+});
+
+
+app.delete('/fruits/:id', (req, res) => {
+    const sql = 'DELETE FROM fruits WHERE id = ?';
+    connection.query(sql, [req.params.id], (err) => {
+        if (err) {
+            res.status(500);
+        } else {
+            res.json({ success: true, id: +req.params.id });
+        }
+    });
+});
+
 
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
     const sql = 'SELECT * FROM users WHERE name = ? AND password = ?';
     connection.query(sql, [username, md5(password)], (err, results) => {
         if (err) {
-            res.status(500);
+            res.status(500).json({ message: 'Server error 1' });
         } else {
             if (results.length > 0) {
                 const token = md5(uuidv4());
