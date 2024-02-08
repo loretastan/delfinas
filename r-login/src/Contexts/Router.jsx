@@ -4,6 +4,7 @@ import FruitsIndex from '../Pages/Fruits/Index.jsx';
 import Login from '../Pages/Auth/Login.jsx';
 import Page404 from '../Pages/Page404.jsx';
 import Page401 from '../Pages/Page401.jsx';
+import UsersIndex from '../Pages/Users/Index.jsx';
 
 export const Router = createContext();
 
@@ -49,7 +50,9 @@ export const RouterProvider = ({ children }) => {
         { path: '#fruits', component: <FruitsIndex /> },
 
 
-        { path: '#login', component: <Login /> }
+        { path: '#login', component: <Login /> },
+        { path: '#register', component: <UsersIndex to="register" /> },
+        { path: '#users', component: <UsersIndex /> }
 
     ];
 
