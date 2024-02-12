@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 
 import Page404 from '../Pages/Page404.jsx';
-
+import AuthorIndex from '../Pages/Authors/Index.jsx';
 
 export const Router = createContext();
 
@@ -17,7 +17,7 @@ export const RouterProvider = () => {
         return hash;
     });
 
-    useEffect(() => {
+    useEffect(_ => {
         const handleHashChange = _ => {
             const hash = window.location.hash.split('/');
             setRoute(hash.shift());
@@ -27,8 +27,10 @@ export const RouterProvider = () => {
         return _ => window.removeEventListener('hashchange', handleHashChange);
     }, []);
 
+
     const routes = [
-        // { path: '#home', component: <HomeIndex /> },
+        { path: '#authors', component: <AuthorIndex /> },
+
 
     ];
 
