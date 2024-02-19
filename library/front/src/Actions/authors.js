@@ -21,3 +21,52 @@ export function storeAuthorAsReal(response) {
         payload: response
     }
 }
+
+export function storeAuthorAsUndo(author) {
+    return {
+        type: constants.CREATE_AUTHOR_UNDO,
+        payload: author
+    }
+}
+
+export function deleteAuthorAsTemp(author) {
+    return {
+        type: constants.DELETE_AUTHOR,
+        payload: author
+    }
+}
+
+export function deleteAuthorAsReal(response) {
+    return {
+        type: constants.DELETE_AUTHOR_REAL,
+        payload: response
+    }
+}
+
+export function deleteAuthorAsUndo(author) {
+    return {
+        type: constants.DELETE_AUTHOR_UNDO,
+        payload: author
+    }
+}
+
+export function updateAuthorAsTemp(author, oldAuthor) {
+    return {
+        type: constants.UPDATE_AUTHOR,
+        payload: { author, oldAuthor }
+    }
+}
+
+export function updateAuthorAsReal(response) {
+    return {
+        type: constants.UPDATE_AUTHOR_REAL,
+        payload: response
+    }
+}
+
+export function updateAuthorAsUndo(author) {
+    return {
+        type: constants.UPDATE_AUTHOR_UNDO,
+        payload: author
+    }
+}
