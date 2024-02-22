@@ -2,19 +2,19 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { SERVER_URL } from '../Constants/main';
 
-export default function useAuthorsDropdown() {
+export default function useBooksDropdown() {
 
-    const [authorsDropdown, setAuthorsDropdown] = useState(null);
+    const [booksDropdown, setBooksDropdown] = useState(null);
 
     useEffect(_ => {
-        axios.get(`${SERVER_URL}/authors`)
+        axios.get(`${SERVER_URL}/books`)
             .then(res => {
-                setAuthorsDropdown(res.data)
+                setBooksDropdown(res.data)
             })
             .catch(err => {
                 console.log(err);
             });
     }, []);
 
-    return { authorsDropdown };
+    return { booksDropdown };
 }
