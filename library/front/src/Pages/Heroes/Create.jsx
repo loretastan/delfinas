@@ -1,6 +1,7 @@
-import { useContext, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { Heroes } from '../../Contexts/Heroes';
 import useBooksDropdown from '../../Hooks/useBooksDropdown';
+import useImage from '../../Hooks/useImage';
 
 const defaultInputs = {
     name: '',
@@ -16,6 +17,10 @@ export default function Create() {
 
     const { setStoreHero } = useContext(Heroes);
 
+    const { image, readImage, setImage } = useImage();
+
+    const imageInput = useRef();
+
     const handleChange = e => {
         setInputs(prev => ({ ...prev, [e.target.id]: e.target.value }));
     }
@@ -28,8 +33,10 @@ export default function Create() {
         const book = {
             title: booksDropdown.find(book => book.id === +inputs.book_id).title
         }
-        setStoreHero({ ...inputs, author, book });
+        setStoreHero({ ...inputs, author, book, image });
         setInputs(defaultInputs);
+        imageInput.current.value = null;
+        setImage(null);
     }
 
     return (
@@ -57,6 +64,16 @@ export default function Create() {
                                 booksDropdown.map(book => <option key={book.id} value={book.id}>{book.title}</option>)
                             }
                         </select>
+                    </div>
+                }
+                <div className="mb-3">
+                    <label htmlFor="image" className="form-label">Image</label>
+                    <input ref={imageInput} type="file" className="form-control" id="image" onChange={readImage} />
+                </div>
+                {
+                    image &&
+                    <div className="mb-3">
+                        <img src={image} alt={inputs.name} className="img-fluid" />
                     </div>
                 }
             </div>
