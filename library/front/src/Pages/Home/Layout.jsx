@@ -9,6 +9,7 @@ export default function Layout() {
 
     if (!home) return (<div>Loading...</div>);
 
+
     return (
         <>
             <Nav />

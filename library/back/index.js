@@ -17,7 +17,7 @@ const port = 3001;
 
 app.use(cors({
     origin: 'http://localhost:3000',
-    credentials: true
+    credentials: true,
 }));
 app.use(cookieParser());
 app.use(express.json({ limit: '10mb' }));
@@ -62,6 +62,98 @@ const deleteImage = heroId => {
     });
 };
 
+const checkUserIsAuthorized = (user, res, roles) => {
+    if (user && roles.includes(user.role)) {
+        return true;
+    } else if (user && roles.includes('self:' + user.id)) {
+        return true;
+    } else if (user) {
+        res.status(401).json({
+            message: 'Not authorized',
+            type: 'role'
+        });
+    } else {
+        res.status(401).json({
+            message: 'Not logged in',
+            type: 'login'
+        });
+    }
+}
+
+
+
+const doAuth = (req, res, next) => {
+    const token = req.cookies.libSession || '';
+    if (token === '') {
+        return next();
+    }
+    const sql = `
+    SELECT name, id, role
+    FROM users
+    WHERE session = ?
+  `;
+    connection.query(sql, [token], (err, results) => {
+        if (err) {
+            res.status(500).json({ message: 'Server error On Auth' });
+        } else {
+            if (results.length > 0) {
+                const user = results[0];
+                req.user = user;
+            }
+        }
+        return next();
+    });
+};
+
+app.use(doAuth);
+
+
+
+//login
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+    const sql = 'SELECT * FROM users WHERE name = ? AND password = ?';
+    connection.query(sql, [username, md5(password)], (err, results) => {
+        if (err) {
+            res.status(500).json({ message: 'Server error On Login' });
+        } else {
+            if (results.length > 0) {
+                const token = md5(uuidv4());
+                const sql = 'UPDATE users SET session = ? WHERE id = ?'
+                connection.query(sql, [token, results[0].id], (err) => {
+                    if (err) {
+                        res.status(500).json({ message: 'Server error On Login' });
+                    } else {
+                        res.cookie('libSession', token, { maxAge: 1000 * 60 * 60 * 24 * 365, httpOnly: true });
+                        res.json({
+                            success: true,
+                            name: results[0].name,
+                            role: results[0].role,
+                            id: results[0].id
+                        });
+                    }
+                });
+            } else {
+                res.status(401).json({ message: 'Invalid name or password' });
+            }
+        }
+    });
+});
+
+//logout
+app.post('/logout', (req, res) => {
+    const token = req.cookies.libSession || '';
+    const sql = 'UPDATE users SET session = NULL WHERE session = ?';
+    connection.query(sql, [token], (err) => {
+        if (err) {
+            res.status(500).json({ message: { type: 'danger', text: 'Server Error.' } });
+        } else {
+            res.clearCookie('libSession');
+            res.json({ message: { type: 'success', text: 'Goodbye!' } });
+        }
+    });
+});
+
 
 
 
@@ -70,8 +162,10 @@ const deleteImage = heroId => {
 
 app.get('/stats', (req, res) => {
 
-    res.cookie('test', 'test');
 
+    if (!checkUserIsAuthorized(req.user, res, ['admin', 'user', 'animal'])) {
+        return;
+    }
 
 
     const sql = `
@@ -92,6 +186,8 @@ app.get('/stats', (req, res) => {
         }
     });
 });
+
+
 
 app.get('/authors', (req, res) => {
     const sql = 'SELECT * FROM authors';

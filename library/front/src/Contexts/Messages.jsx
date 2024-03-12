@@ -22,16 +22,21 @@ export const MessagesProvider = ({ children }) => {
             addMessage
         }}>
             <>
-                <div className="messages">
-                    {
-                        messages.map(message => (
-                            <div key={message.id} className={`alert alert-${message.type}`}
-                                role="alert" onClick={_ => setMessages(m => m.filter(m => m.id !== message.id))}>
-                                {message.text}
-                            </div>
-                        ))
-                    }
-                </div>
+                {
+                    messages.length > 0 &&
+                    <div className="messages">
+                        {
+                            messages.map(message => (
+                                <div key={message.id} className={`alert alert-${message.type}`}
+                                    role="alert" onClick={_ => setMessages(m => m.filter(m => m.id !== message.id))}>
+                                    {message.text}
+                                </div>
+                            ))
+                        }
+                    </div>
+                }
+
+
                 {children}
             </>
 
